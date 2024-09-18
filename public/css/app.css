@@ -1,0 +1,27 @@
+/* public/css/app.css */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.search-filter {
+    margin-bottom: 20px;
+}
+
+.car-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.car-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}

@@ -1,0 +1,296 @@
+
+
+CAR RENTAL SYSTGEM
+
+
+
+########## Login Details ##########
+/admin
+palash884@gmail.com
+12345678
+
+user:
+Razzak
+01711763170
+Dhaka
+
+123ruevey@gmail.com
+12345678
+
+
+
+
+
+
+
+
+php artisan view:clear
+php artisan cache:clear
+php artisan config:clear
+
+
+
+
+// ADMIN PART:
+
+login : admin/dashboard
+
+Customer Part:
+
+/Root page
+
+All car show. upore date to date search system thakbe.
+niche car click korle ekta form asbe, date to date select kore submit dite hobe.
+
+Submit korle status pending hobe. 
+cash receive korle status hired hobe.
+return asle status abar pending hobe. and car available dekhabe.
+
+
+user tar nijer history dekte parbe.
+
+
+
+
+side menu:
+Dashboard
+Setup   -> Car List
+        -> Customer List
+        -> 
+
+Report:
+
+
+
+
+
+
+
+
+###############################################
+###############################################
+
+Ostad requirement:
+
+Submission Guidelines:
+
+1. Must Submit Github link.
+
+2. Must Create a Fresh New Repository and this repository should have only Laravels folders and files.
+
+3. Don't push the folder where your project is created. So that we don't need to go inside that folder.
+
+4. Must see this Demo image before submitting:
+
+https://drive.google.com/file/d/19B1kkA5oGWe6aUIjI1lAdZsEyoJZfX6U/view?usp=sharing
+
+5. Must have to create a project presentation video where each and every functionalities are shown properly within 3/3.50 mins max and upload it in your google drive and add the link in your Laravel Project’s Readme.md file.
+
+6. Must include your Database SQL File inside your Laravel Project’s main directory.
+
+
+The goal of this assignment is to build a Car Rental Web Application using Laravel. 
+This Car Rental Web Application allows users to browse available cars, select a car, and book it for a specified rental period. 
+
+The system ensures that cars are available for the chosen dates before confirming the booking. 
+
+It includes role-based access control, where administrators can manage cars and rentals, 
+while customers can view their bookings.
+
+
+
+This project will have two main interfaces:
+
+Admin Dashboard - for managing cars, rentals, and customers.
+
+Frontend - for users to browse available cars, make bookings, and view rental history.
+
+
+
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Requirements:
+
+Part 1: Admin Dashboard
+
+The Admin should be able to perform the following tasks:
+
+
+
+Manage Cars:
+Add, edit, and delete car details. Each car should have the following properties:
+
+Car Name
+Brand
+Model
+Year of Manufacture
+Car Type (SUV, Sedan, etc.)
+Daily Rent Price
+Availability Status (Available/Not Available)
+Car Image
+
+
+
+Manage Rentals:
+View and manage (CRUD) all car rentals, including:
+Rental ID
+Customer Name
+Car Details (Name, Brand)
+Rental Start Date and End Date
+Total Cost
+Status (Ongoing, Completed, Canceled)
+
+
+
+Manage Customers:
+View and manage (CRUD) customer details:
+Customer Name
+Email
+Phone Number
+Address
+Rental History
+
+
+
+## Dashboard Overview:
+
+Show important statistics like:
+
+Total number of cars
+Number of available cars
+Total number of rentals
+Total earnings from rentals
+
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Part 2: Frontend (User Interface) (Home, About, Rentals, Contact, Login/Singup)
+
+Users should be able to:
+Browse Cars:
+View available cars with filters such as car type, brand, and daily rent price.
+
+
+
+Make a Booking:
+Select a car, choose the rental start and end date, and book the car.
+Ensure that the selected car is available for the chosen period.
+
+
+Manage Bookings:
+After logging in, users should be able to:
+View their current and past bookings.
+Cancel a booking (only if the rental has not started yet).
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>
+
+User Authentication:
+
+Implement a basic authentication system for users.
+
+Allow users to sign up, log in, and log out.
+
+Use middleware to protect routes (e.g., only logged-in users can book cars or view their booking history).
+
+
+
+
+
+Part 3: Technical Requirements (Do not rename any of the given elements)
+
+Database Design:
+Design the database schema for the car rental system, including tables for:
+Users (admin, customers)
+Cars
+Rentals
+
+
+
+Email System: 
+When a car is rented, a detail of that rental should be sent to the customer's email and also sent an email to the admin that a car is rented by which customer.
+
+
+Here we are not implementing any payment system. It is now on By Cash mode.
+
+
+## Tables and Their Columns:
+
+users Table:
+id (BIGINT)
+name (STRING)
+email (STRING)
+password (STRING)
+role (STRING) [admin/customer]
+created_at (TIMESTAMP)
+updated_at (TIMESTAMP)
+
+
+
+cars Table:
+id (BIGINT)
+name (STRING)
+brand (STRING)
+model (STRING)
+year (INTEGER)
+car_type (STRING)
+daily_rent_price (DECIMAL)
+availability (BOOLEAN)
+image (STRING)
+created_at (TIMESTAMP)
+updated_at (TIMESTAMP)
+
+
+
+rentals Table:
+id (BIGINT)
+user_id (BIGINT)
+car_id (BIGINT)
+start_date (DATE)
+end_date (DATE)
+total_cost (DECIMAL)
+created_at (TIMESTAMP)
+updated_at (TIMESTAMP)
+
+
+
+
+Controllers:
+Admin Controllers:
+CarController (Admin/CarController.php)
+RentalController (Admin/RentalController.php)
+CustomerController (Admin/CustomerController.php)
+
+
+
+Frontend Controllers:
+PageController (Frontend/PageController.php)
+CarController (Frontend/CarController.php)
+RentalController (Frontend/RentalController.php)
+
+
+
+
+Models:
+User (User.php):
+isAdmin(): A method to check if the user is an admin.
+isCustomer(): A method to check if the user is a customer.
+rentals(): Defines a hasMany relationship with the Rental model, indicating that a user can have multiple rentals.
+
+
+
+Car (Car.php):
+rentals(): Defines a hasMany relationship with the Rental model, indicating that a car can have multiple rentals.
+
+
+
+Rental (Rental.php):
+car(): Defines a belongsTo relationship with the Car model, indicating that a rental is associated with one car.
+user(): Defines a belongsTo relationship with the User model, indicating that a rental is associated with one user.
+
